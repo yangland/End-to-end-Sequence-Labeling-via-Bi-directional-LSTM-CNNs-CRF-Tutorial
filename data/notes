@@ -1,0 +1,94 @@
+Expected 4-dimensional input for 4-dimensional weight [400, 1, 3, 20], but got 3-dimensional input of size [2, 1, 125] instead
+
+
+Inside of get_lstm_features(self, sentence, chars2, chars2_length, d)
+
+chars_embeds.size torch.Size([5, 1, 7, 25])
+chars_embeds.size after max pool: torch.Size([5, 25])
+embeds.size-loading torch.Size([5, 100])
+embeds.size-cat torch.Size([5, 125])
+embeds.size-unsqueeze torch.Size([5, 1, 125])
+embeds.size-dropout torch.Size([5, 1, 125])
+----
+chars_embeds.size torch.Size([41, 1, 14, 25])
+chars_cnn_out3.size torch.Size([41, 25, 16, 1])
+chars_embeds.size after max pool: torch.Size([41, 25])
+embeds.size-loading torch.Size([41, 100])
+embeds.size-cat torch.Size([41, 125])
+embeds.size-unsqueeze torch.Size([41, 1, 125])
+embeds.size-dropout torch.Size([41, 1, 125])
+----
+chars_embeds.size torch.Size([11, 1, 12, 25])
+chars_cnn_out3.size torch.Size([11, 25, 14, 1])
+chars_embeds.size after max pool: torch.Size([11, 25])
+embeds.size-loading torch.Size([11, 100])
+embeds.size-cat torch.Size([11, 125])
+embeds.size-unsqueeze torch.Size([11, 1, 125])
+embeds.size-dropout torch.Size([11, 1, 125])
+
+----
+chars_embeds.size torch.Size([29, 1, 13, 25])
+chars_cnn_out3.size torch.Size([29, 25, 15, 1])
+chars_embeds.size after max pool: torch.Size([29, 25])
+embeds.size-loading torch.Size([29, 100])
+embeds.size-cat torch.Size([29, 125])
+embeds.size-unsqueeze torch.Size([29, 1, 125])
+embeds.size-dropout torch.Size([29, 1, 125])
+
+----
+chars2.size torch.Size([9, 8])
+self.char_embeds(chars2).size torch.Size([9, 8, 25])
+chars_embeds.size torch.Size([9, 1, 8, 25])
+chars_cnn_out3.size torch.Size([9, 25, 10, 1])
+chars_embeds.size after max pool: torch.Size([9, 25])
+embeds.size-loading torch.Size([9, 100])
+embeds.size-cat torch.Size([9, 125])
+embeds.size-unsqueeze torch.Size([9, 1, 125])
+embeds.size-dropout torch.Size([9, 1, 125])
+
+
+
+parameters['word_lstm_dim'] = 200
+
+(word_cnn3): Conv2d(1, 400, kernel_size=(3, 20), stride=(1, 1), padding=(2, 0))
+
+(char_cnn3): Conv2d(1, 25, kernel_size=(3, 25), stride=(1, 1), padding=(2, 0))
+feed in:
+chars_embeds.size torch.Size([41, 1, 14, 25])
+
+
+----
+
+chars2.size torch.Size([22, 9])
+self.char_embeds(chars2).size torch.Size([22, 9, 25])
+chars_embeds.size torch.Size([22, 1, 9, 25])
+chars_cnn_out3.size torch.Size([22, 25, 11, 1])
+chars_embeds.size after max pool: torch.Size([22, 25])
+embeds.size-loading torch.Size([22, 100])
+embeds.size-cat torch.Size([22, 125])
+embeds.size-unsqueeze torch.Size([22, 1, 125])
+embeds.size-dropout torch.Size([22, 1, 125])
+word_cnn_out3 torch.Size([22, 400, 3, 106])
+
+
+wordmodel = 'LSTM'
+
+chars2.size torch.Size([16, 13])
+self.char_embeds(chars2).size torch.Size([16, 13, 25])
+chars_embeds.size torch.Size([16, 1, 13, 25])
+chars_cnn_out3.size torch.Size([16, 25, 15, 1])
+chars_embeds.size after max pool: torch.Size([16, 25])
+embeds.size-loading torch.Size([16, 100])
+embeds.size-cat torch.Size([16, 125])
+embeds.size-unsqueeze torch.Size([16, 1, 125])
+embeds.size-dropout torch.Size([16, 1, 125])
+lstm_out after dropout torch.Size([16, 400])
+lstm_feats.size torch.Size([16, 19])
+
+----
+
+neg_log_likelihood = model.neg_log_likelihood(sentence_in, targets, chars2_mask, chars2_length, d)
+
+def get_neg_log_likelihood(self, sentence, tags, chars2, chars2_length, d):\
+
+chars2 -> chars2_mask

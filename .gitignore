@@ -3,3 +3,4 @@ data/glove.6B.100d.txt
 !.gitignore
 
 *.txt
+models/self-trained-model
